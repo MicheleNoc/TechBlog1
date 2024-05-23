@@ -1,0 +1,66 @@
+<%- include("header.ejs") %>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <div class="firstsection">
+    <h2> Benvenuto nel TechBlog ☕️ </h2>
+    <p> Qua puoi trovare e pubblicare articoli sul mondo della tecnologia!</p>
+  </div>
+<div class="container">
+    <div class="divform box">
+    <form method="POST" action="/submit">
+        <h5>Scrivi il tuo articolo! ✍🏻</h5>
+        <label for="autor">Autore:</label><br>
+        <input id="numbers" class="number-area" name="autor"><br>
+
+        <label for="title">Titolo:</label><br>
+        <input id="numbers" class="number-area" name="title"><br>
+
+        <label for="title">Scrivi articolo:</label><br>
+        <textarea id="message" class="message-area" name="message"></textarea>
+        <br>
+        <div>
+            <button class="btn btn-success alert-success" type="submit">
+                Posta
+            </button>
+        </div>
+    </form>
+        </div>
+
+    <div class="articolo box">
+
+    <div class="art-title"> <h2>Articoli presenti</h2> </div>
+      <div class="hr-bottontitle"><hr></div>
+    <div class="article">
+    <% articles.forEach(article => { %>
+      <div>
+        <h3><%= article.title %></h3>
+        <p><strong>Autore:</strong> <%= article.autor %></p>
+        <p> <%= article.corp %></p>
+        <div>
+            <form action="/delete/<%= article.id %>" method="POST" style="display:inline;">
+                <button class="btn btn-danger" type="submit">Cancella</button>
+              </form>
+              <form action="/edit/<%= article.id %>" method="GET" style="display:inline;">
+                <button class="btn btn-warning" type="submit">Edit</button>
+              </form>
+        </div>
+        <div class="hr-finisharticle"><hr></div>
+      </div>
+    <% }) %>
+    </div>
+    </div>    
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9gybBogGzEyZHJ1f1Q1/r+eoO2eTo1OXc6MY5WjLC4B5p6b7/z2" crossorigin="anonymous"></script>
+</body>
+
+<footer> <%- include("footer.ejs") %> </footer>
+
+</html>

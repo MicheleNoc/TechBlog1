@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista degli Articoli</title>
+</head>
+<body>
+    <div class="articoli">
+        <% if (articles && articles.length > 0) { %>
+            <% articles.forEach(function(article) { %>
+                <div class="articolo box">
+                    <h4><%= article.autor %> - <%= article.title %></h4>
+                    <p><%= article.corp %></p>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <h1>Non è presente nessun articolo.</h1>
+        <% } %>
+    </div>
+</body>
+</html>
